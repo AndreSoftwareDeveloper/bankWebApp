@@ -1,10 +1,11 @@
-class Account:
+from person import Person
 
-    def __init__(self, balance: int, account_number: int, history, owner, login, password, transactions_history):
+
+class Account:
+    def __init__(self, UserMixin, db,  account_number: int, password, balance: int, transactions_history, owner: Person):
+        self.db_model = db.model
+        # self.account_number = db.Column(db.String(100), unique=True, nullable=False)
+        self.password = db.Column(db.String(100), nullable=False)
         self.balance = balance
-        self.account_number = account_number
-        self.login = login
-        self.password = password
         self.transactions_history = transactions_history
-        self.history = history
         self.owner = owner
